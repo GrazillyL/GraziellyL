@@ -1,0 +1,48 @@
+# usar-codigo-cobrinha-git
+
+## 1º parte dos códigos
+
+name: Generate Snake
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Generate Snake
+        uses: Platane/snk@v3
+        with:
+          github_user_name: GraziellyL
+          outputs: |
+            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+
+      - name: Push to output branch
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+          2º parte dos códigos
+
+          <picture align="center">
+  <source media="(prefers-color-scheme: dark)" 
+          srcset="https://raw.githubusercontent.com/giovannabochenski/giovannabochenski/output/github-contribution-grid-snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" 
+          srcset="https://raw.githubusercontent.com/giovannabochenski/giovannabochenski/output/github-contribution-grid-snake.svg">
+  <img align="center" 
+       alt="github contribution grid snake animation" 
+       src="https://raw.githubusercontent.com/giovannabochenski/giovannabochenski/output/github-contribution-grid-snake.svg">
+</picture>
