@@ -1,36 +1,20 @@
-name: Generate Snake
+# GraziellyL
 
-on:
-  schedule:
-    - cron: "0 0 * * *"
+<div align="center">
 
-  workflow_dispatch:
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="https://raw.githubusercontent.com/GraziellyL/GraziellyL/output/github-contribution-grid-snake-dark.svg"
+    />
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="https://raw.githubusercontent.com/GraziellyL/GraziellyL/output/github-contribution-grid-snake.svg"
+    />
+    <img
+      alt="github contribution grid snake animation"
+      src="https://raw.githubusercontent.com/GraziellyL/GraziellyL/output/github-contribution-grid-snake.svg"
+    />
+  </picture>
 
-  push:
-    branches:
-      - main
-      - master
-
-jobs:
-  generate:
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-
-    steps:
-      - name: Generate Snake
-        uses: Platane/snk/svg-only@v3
-        with:
-          github_user_name: GraziellyL
-          outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
-
-      - name: Push Snake to output branch
-        uses: crazy-max/ghaction-github-pages@v3.1.0
-        with:
-          target_branch: output
-          build_dir: dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+</div>
